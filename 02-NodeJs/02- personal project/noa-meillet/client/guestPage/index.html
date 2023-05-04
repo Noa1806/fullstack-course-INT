@@ -4,12 +4,16 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Wedding Planner- Guests List</title>
+    <link rel="stylesheet" href="./dist/style.css">
+    <script src="./dist/control.js" defer></script>
+    <script src="./dist/model.js" defer></script>
+    <script src="./dist/view.js" defer></script>
 </head>
 <body>
     <div class="nav-bar"></div>
+    <h2>Your Guests List</h2>
     <form class="add-guest-form" onsubmit="AddGuest(event)">
-        <h2>Add Your Guests</h2>
         <div class="add-guest-form__input">
             <h4>First Name</h4>
             <input type="text" placeholder="Guest's first name...">
@@ -25,6 +29,10 @@
         <div class="add-guest-form__input">
             <h4>Number Of Guests</h4>
             <input type="text" placeholder="Number of guests...">
+        </div>
+        <div class="add-guest-form__input">
+            <h4>Guest Category</h4>
+            <input type="text" placeholder="List of category...">
         </div>
         <button type="submit" class="btn">Add To Your List</button>
     </form>
