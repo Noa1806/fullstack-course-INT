@@ -1,4 +1,6 @@
 import mongoose, { Schema } from "mongoose";
+import { UserSchema } from "../users/usersModel";
+
 
 interface Guest {
   // public uid: string = uuid();
@@ -27,6 +29,14 @@ export const GuestSchema = new Schema({
       },
     });
 
+
+export const UserGuestSchema = new Schema({
+      user:UserSchema,
+      guest:GuestSchema
+    })  
+  
+export const UserGuestModel = mongoose.model("user-guests", UserGuestSchema);
+   
 const GuestModel = mongoose.model("guests", GuestSchema);
 
 export default GuestModel;

@@ -1,4 +1,5 @@
 import mongoose, { Schema } from "mongoose";
+import { UserSchema } from "../users/usersModel";
 
 interface Expense {
   // public uid: string = uuid();
@@ -28,6 +29,15 @@ export const ExpenseSchema = new Schema({
         default: expenseCategory.OTHER,
       },
     });
+
+
+export const UserExpenseSchema = new Schema({
+  user:UserSchema,
+  guest:ExpenseSchema
+})  
+
+export const UserExpenseModel = mongoose.model("user-expenses", UserExpenseSchema);
+
 
 const ExpenseModel = mongoose.model("expenses", ExpenseSchema);
 

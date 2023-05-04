@@ -1,7 +1,8 @@
 "use strict";
 exports.__esModule = true;
-exports.ExpenseSchema = exports.expenseCategory = void 0;
+exports.UserExpenseModel = exports.UserExpenseSchema = exports.ExpenseSchema = exports.expenseCategory = void 0;
 var mongoose_1 = require("mongoose");
+var usersModel_1 = require("../users/usersModel");
 var expenseCategory;
 (function (expenseCategory) {
     expenseCategory["WEDDING"] = "wedding";
@@ -21,5 +22,10 @@ exports.ExpenseSchema = new mongoose_1.Schema({
         "default": expenseCategory.OTHER
     }
 });
+exports.UserExpenseSchema = new mongoose_1.Schema({
+    user: usersModel_1.UserSchema,
+    guest: exports.ExpenseSchema
+});
+exports.UserExpenseModel = mongoose_1["default"].model("user-expenses", exports.UserExpenseSchema);
 var ExpenseModel = mongoose_1["default"].model("expenses", exports.ExpenseSchema);
 exports["default"] = ExpenseModel;
