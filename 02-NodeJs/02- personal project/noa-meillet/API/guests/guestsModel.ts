@@ -7,7 +7,7 @@ interface Guest {
   firstName: string;
   lastName: string;
   phoneNumber: string;
-  NumberOfGuests: number;
+  numberOfGuests: number;
 }
 
 export enum GuestType {
@@ -21,7 +21,7 @@ export const GuestSchema = new Schema({
     firstName: {require:true, type:String},
     lastName: {require:true, type:String},
     phoneNumber: {require:true, type:String},
-    NumberOfGuests: {require:true, type:Number},
+    numberOfGuests: {require:true, type:Number},
     GuestType: {
         type: String,
         enum: GuestType,

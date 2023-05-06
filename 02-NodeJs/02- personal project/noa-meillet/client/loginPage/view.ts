@@ -1,0 +1,1 @@
+const loginForm: HTMLFormElement|any = document.querySelector(".login-form");

@@ -4,11 +4,18 @@ const secret = process.env.JWT_SECRET;*/
 
 export const addUser = async (req: any, res: any) => {
   try {
-    const { nameOfBride, nameOfGroom, WeddingDate, username, password} = req.body;
+    const { nameOfBride, nameOfGroom, weddingDate, username, password } =
+      req.body;
     console.log(username, password);
 
     //add users to DB;
-    const userDB = await UserModel.create({ nameOfBride, nameOfGroom, WeddingDate, username, password});
+    const userDB = await UserModel.create({
+      nameOfBride,
+      nameOfGroom,
+      weddingDate,
+      username,
+      password,
+    });
 
     console.log(userDB);
 
@@ -21,7 +28,7 @@ export const addUser = async (req: any, res: any) => {
 
 export const login = async (req: any, res: any) => {
   try {
-    const {username, password} = req.body;
+    const { username, password } = req.body;
     console.log(username, password);
 
     //add users to DB;

@@ -41,14 +41,20 @@ var usersModel_1 = require("./usersModel");
 /*import jwt from "jwt-simple";
 const secret = process.env.JWT_SECRET;*/
 exports.addUser = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var _a, nameOfBride, nameOfGroom, WeddingDate, username, password, userDB, error_1;
+    var _a, nameOfBride, nameOfGroom, weddingDate, username, password, userDB, error_1;
     return __generator(this, function (_b) {
         switch (_b.label) {
             case 0:
                 _b.trys.push([0, 2, , 3]);
-                _a = req.body, nameOfBride = _a.nameOfBride, nameOfGroom = _a.nameOfGroom, WeddingDate = _a.WeddingDate, username = _a.username, password = _a.password;
+                _a = req.body, nameOfBride = _a.nameOfBride, nameOfGroom = _a.nameOfGroom, weddingDate = _a.weddingDate, username = _a.username, password = _a.password;
                 console.log(username, password);
-                return [4 /*yield*/, usersModel_1["default"].create({ nameOfBride: nameOfBride, nameOfGroom: nameOfGroom, WeddingDate: WeddingDate, username: username, password: password })];
+                return [4 /*yield*/, usersModel_1["default"].create({
+                        nameOfBride: nameOfBride,
+                        nameOfGroom: nameOfGroom,
+                        weddingDate: weddingDate,
+                        username: username,
+                        password: password
+                    })];
             case 1:
                 userDB = _b.sent();
                 console.log(userDB);
@@ -116,4 +122,4 @@ export const getUser = async (req: any, res: any) => {
     res.status(500).send({ error: error.message });
   }
 };
-*/ 
+*/

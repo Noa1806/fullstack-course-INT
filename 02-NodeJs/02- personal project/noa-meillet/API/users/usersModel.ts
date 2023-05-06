@@ -1,10 +1,9 @@
 import mongoose, { Schema } from "mongoose";
 
 interface User {
-  // public uid: string = uuid();
   nameOfBride: string;
   nameOfGroom: string;
-  WeddingDate: Date;
+  weddingDate: Date;
   username: string;
   password: string;
 }

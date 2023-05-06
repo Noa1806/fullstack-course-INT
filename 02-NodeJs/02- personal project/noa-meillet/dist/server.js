@@ -18,16 +18,12 @@ if (uri) {
 else {
     console.log("No URI to DB");
 }
-/*
-import usersRouter from './API/users/usersRoute';
-app.use('/api/users', usersRouter);
-
-import guestsRouter from './API/guests/guestsRoute';
-app.use('/api/guests', guestsRouter);
-
-import expensesRouter from './API/expenses/expensesRoute';
-app.use('/api/expenses', expensesRouter);
-*/
+var usersRoute_1 = require("./API/users/usersRoute");
+app.use('/api/users', usersRoute_1["default"]);
+var guestsRoute_1 = require("./API/guests/guestsRoute");
+app.use('/api/guests', guestsRoute_1["default"]);
+var expensesRoute_1 = require("./API/expenses/expensesRoute");
+app.use('/api/expenses', expensesRoute_1["default"]);
 app.use(express_1["default"].json());
 app.use(express_1["default"].static("./client/loginPage"));
 app.listen(3000, function () {

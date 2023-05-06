@@ -1,15 +1,15 @@
 "use strict";
 exports.__esModule = true;
-exports.UserExpenseModel = exports.UserExpenseSchema = exports.ExpenseSchema = exports.expenseCategory = void 0;
+exports.UserExpenseModel = exports.UserExpenseSchema = exports.ExpenseSchema = exports.ExpenseCategory = void 0;
 var mongoose_1 = require("mongoose");
 var usersModel_1 = require("../users/usersModel");
-var expenseCategory;
-(function (expenseCategory) {
-    expenseCategory["WEDDING"] = "wedding";
-    expenseCategory["HENNA"] = "henna";
-    expenseCategory["SHABBAT_HATAN"] = "shabbat hatan";
-    expenseCategory["OTHER"] = "other";
-})(expenseCategory = exports.expenseCategory || (exports.expenseCategory = {}));
+var ExpenseCategory;
+(function (ExpenseCategory) {
+    ExpenseCategory["WEDDING"] = "wedding";
+    ExpenseCategory["HENNA"] = "henna";
+    ExpenseCategory["SHABBAT_HATAN"] = "shabbat hatan";
+    ExpenseCategory["OTHER"] = "other";
+})(ExpenseCategory = exports.ExpenseCategory || (exports.ExpenseCategory = {}));
 exports.ExpenseSchema = new mongoose_1.Schema({
     category: { require: true, type: String },
     name: { require: true, type: String },
@@ -18,8 +18,8 @@ exports.ExpenseSchema = new mongoose_1.Schema({
     advancePayement: { require: true, type: Number },
     expenseCategory: {
         type: String,
-        "enum": expenseCategory,
-        "default": expenseCategory.OTHER
+        "enum": ExpenseCategory,
+        "default": ExpenseCategory.OTHER
     }
 });
 exports.UserExpenseSchema = new mongoose_1.Schema({

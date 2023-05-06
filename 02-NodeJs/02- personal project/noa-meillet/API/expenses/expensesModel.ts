@@ -10,7 +10,7 @@ interface Expense {
   advancePayement: number;
 }
 
-export enum expenseCategory {
+export enum ExpenseCategory {
     WEDDING = "wedding",
     HENNA = "henna",
     SHABBAT_HATAN = "shabbat hatan",
@@ -25,8 +25,8 @@ export const ExpenseSchema = new Schema({
     advancePayement: {require:true, type:Number},
     expenseCategory: {
         type: String,
-        enum: expenseCategory,
-        default: expenseCategory.OTHER,
+        enum: ExpenseCategory,
+        default: ExpenseCategory.OTHER,
       },
     });
 

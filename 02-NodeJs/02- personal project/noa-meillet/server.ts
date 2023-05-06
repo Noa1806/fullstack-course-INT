@@ -18,16 +18,18 @@ if (uri) {
 } else {
   console.log("No URI to DB");
 }
-/*
+
 import usersRouter from './API/users/usersRoute';
 app.use('/api/users', usersRouter);
+
 
 import guestsRouter from './API/guests/guestsRoute';
 app.use('/api/guests', guestsRouter);
 
+
 import expensesRouter from './API/expenses/expensesRoute';
 app.use('/api/expenses', expensesRouter);
-*/
+
 
 app.use(express.json());
 app.use(express.static("./client/loginPage"));
