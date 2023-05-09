@@ -26,6 +26,6 @@ var expensesRoute_1 = require("./API/expenses/expensesRoute");
 app.use('/api/expenses', expensesRoute_1["default"]);
 app.use(express_1["default"].json());
 app.use(express_1["default"].static("./client/loginPage"));
-app.listen(3000, function () {
+app.listen(4000, function () {
     console.log("server listen on port 3000");
 });
