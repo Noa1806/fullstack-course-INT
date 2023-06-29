@@ -4,6 +4,7 @@ import { UserSchema } from "../users/usersModel";
 
 interface Guest {
   // public uid: string = uuid();
+  userId: string;
   firstName: string;
   lastName: string;
   phoneNumber: string;
@@ -18,6 +19,7 @@ export enum GuestType {
   }
 
 export const GuestSchema = new Schema({
+    userId: {unique:true, index:true, type:String},
     firstName: {require:true, type:String},
     lastName: {require:true, type:String},
     phoneNumber: {require:true, type:String},
@@ -30,13 +32,6 @@ export const GuestSchema = new Schema({
     });
 
 
-export const UserGuestSchema = new Schema({
-      user:UserSchema,
-      guest:GuestSchema
-    })  
-  
-export const UserGuestModel = mongoose.model("user-guests", UserGuestSchema);
-   
 const GuestModel = mongoose.model("guests", GuestSchema);
 
 export default GuestModel;
