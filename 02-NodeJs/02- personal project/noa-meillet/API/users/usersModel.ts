@@ -1,6 +1,6 @@
 import mongoose, { Schema } from "mongoose";
 
-interface User {
+export interface User {
   nameOfBride: string;
   nameOfGroom: string;
   weddingDate: Date;
@@ -18,6 +18,6 @@ export const UserSchema = new Schema({
     password: {require:true, type:String}
 })
 
-const UserModel = mongoose.model("users", UserSchema);
+const UserModel = mongoose.model<User>("users", UserSchema);
 
 export default UserModel;

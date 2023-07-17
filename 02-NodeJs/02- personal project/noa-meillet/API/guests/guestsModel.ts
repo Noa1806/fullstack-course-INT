@@ -2,7 +2,7 @@ import mongoose, { Schema } from "mongoose";
 import { UserSchema } from "../users/usersModel";
 
 
-interface Guest {
+export interface Guest {
   // public uid: string = uuid();
   userId: string;
   firstName: string;
@@ -32,6 +32,6 @@ export const GuestSchema = new Schema({
     });
 
 
-const GuestModel = mongoose.model("guests", GuestSchema);
+const GuestModel = mongoose.model<Guest>("guests", GuestSchema);
 
 export default GuestModel;

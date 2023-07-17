@@ -1,7 +1,7 @@
 import mongoose, { Schema } from "mongoose";
 import { UserSchema } from "../users/usersModel";
 
-interface Expense {
+export interface Expense {
   // public uid: string = uuid();
   userId: string;
   name: string;
@@ -32,6 +32,6 @@ export const ExpenseSchema = new Schema({
     });
 
 
-const ExpenseModel = mongoose.model("expenses", ExpenseSchema);
+const ExpenseModel = mongoose.model<Expense>("expenses", ExpenseSchema);
 
 export default ExpenseModel;
