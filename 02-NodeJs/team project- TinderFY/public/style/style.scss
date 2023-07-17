@@ -1,0 +1,260 @@
+
+// @import url('https://fonts.googleapis.com/css2?family=Poppins:ital@1&display=swap');
+// @import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@500&display=swap');
+
+
+// *{
+//     margin: 0;
+//     padding: 0;
+//     box-sizing: border-box;
+// }
+
+// body{
+//     font-family: 'Ubuntu', sans-serif;
+//     width: 100vw;
+//     height: 100vh;
+//     kgbacround: url(../../images/mybk.jpg);
+//     background-position: center;
+//     background-repeat: no-repeat;
+//     background-size: cover;
+   
+// }
+// .wrapper{
+//     width: 100vw;
+//     height: 100vh;
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+// }
+
+
+// .container{
+//     width: 605px;
+//     height: 410px;
+//     border: 4px solid rgb(255, 255, 255);
+//     border-radius:25px 10px 25px 10px;
+//     background: url(/public/images/mybk.jpg);
+//     background-position: center;
+//     background-repeat: no-repeat;
+//     background-size: cover;
+    
+    
+       
+//      &__form{
+//         width: 50%;
+//         height: 400px;
+//         float: right;
+//     }
+    
+//       &__SignIn{
+//         width: 100%;
+
+//      }
+
+
+//      #btnsign{
+//         background-color: #be2596;
+//         color: whitesmoke;
+//         border-radius: 50%;
+//         display: flex;
+//         float: right;
+//         padding: 6px;
+        
+//     }
+
+//     &__forminfo{
+//         width: 50%;
+//         height: 400px;
+       
+//     }
+// }
+
+// .registerForm{
+//     width: 100%;
+    
+//     display: inline-block;
+//     justify-content: center;
+
+//     &__h2{
+//         color: rgb(105, 50, 225);
+//         letter-spacing: 1px;
+//        justify-content: center;
+//        display: flex;
+//        margin: 10px;
+      
+//     }
+
+//     &__label{
+//      font-size: 24px;
+//      padding: 15px 5px;
+//      justify-content: center;
+//      display: flex;
+//      color: rgb(105, 50, 225);
+
+// }
+
+//     &__input{
+//         font-size: 24px;
+//         color: rgb(255, 255, 255);
+//         border-radius: 10px;
+//         outline: none;
+//         border:2px solid #be2596;
+//         background-color: #be2596;
+//         margin: 0 20px;
+//         display: flex;
+//         flex-wrap: wrap;
+//         justify-content: center;
+//         align-content: center;
+//         text-align: center;
+//         }
+//         ::placeholder{
+//             color: rgb(10, 5, 9);
+//         } 
+
+//       &__btn{
+//         color: white;
+//         font-size: 16px;
+//         background-color: #be2596;
+//         border-radius: 50%;
+//         padding: 5px;
+//         display: inline-block;
+//         margin: 0 105px;
+        
+//       }
+
+// }
+
+// .container__forminfo{
+//  color: #be2596;
+//  text-align: center;
+//  padding: 15px 0px;
+//  margin: 40px 0px;
+// z-index: 0;
+// &__h1{
+//     font-size: 40px;
+//     padding: 10px;
+//     color: red;
+//     font-weight: bold;
+// }
+
+// span{
+//    color: black; 
+// }
+
+// &__h2{
+//     font-size: 26px;
+//     padding: 15px; 
+//     color: black; 
+    
+// }
+
+// &__h3{
+//     font-size: 24px;
+//     color: rgb(0, 21, 255);
+//     padding: 15px; 
+   
+// }
+// }
+body {
+    background-image: url("../images/dsBuffer.jpg"); 
+    margin: 0;
+    padding: 0;
+    background-size: cover;
+    background-position: center;
+    animation: fadeIn 2s ease-in-out;
+    
+  }
+  
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+      transform: scale(0.8);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }  /* Wrapper styles */
+  .wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.3); /* Add an overlay if desired */
+  }
+  
+  /* Container styles */
+  .container {
+    background: inherit; /* Inherit the background from the body */
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    width: 300px;
+  }  /* Rest of the CSS styles */
+  /* ... */
+  
+  /* Form styles */
+  .container__form {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .registerForm__h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .registerForm__label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .registerForm__input {
+    width: 80%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .registerForm__btn {
+    background-color: #4CAF50;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .registerForm__btn:hover {
+    background-color: #45a049;
+  }
+  
+  /* Error message styles */
+  .container__forminfo {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  .container__forminfo h1 {
+    color: rgb(173, 19, 45);
+  }
+  
+  .container__forminfo h2 {
+    color: rgb(12, 92, 167);
+  }
+    
+  .container__forminfo span {
+    display: inline-block;
+  }
+  
+    
+        
+  /* Rest of the CSS styles */
+  /* ... */
+    
+    #error {
+    color: #9e0909;
+    font-size: 16px;
+  }
+  

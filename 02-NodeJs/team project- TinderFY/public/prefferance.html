@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form class="form" onsubmit="addPrefferance(event)">
+        <div class="form__input">
+            <h4>Minimum Height</h4>
+            <input type="text" name="min-height" placeholder="--cm" min="80" max="220" required>
+        </div>
+        <div class="form__input">
+            <h4>Maximum Height</h4>
+            <input type="text" name="max-height" placeholder="--cm" min="80" max="220" required>
+        </div>
+        <div class="form__input">
+            <h4>Minimum Age</h4>
+            <input type="text" name="min-age" placeholder="--y" min="18" max="120" required>
+        </div>
+        <div class="form__input">
+            <h4>Maximum Age</h4>
+            <input type="text" name="max-age" placeholder="--y" min="18" max="120" required>
+        </div>
+        <div class="form__input">
+            <h4>Body Type</h4>
+            <input list="bodyType" name="bodytype-list">
+            <datalist id="bodyType">
+                <option value="small">
+                <option value="medium">
+                <option value="large">
+                <option value="x-large">
+                <option value="all">
+            </datalist>
+        </div>
+        <div class="form__input">
+            <h4>Gender</h4>
+            <input list="gender" name="gender-list">
+            <datalist id="gender">
+                <option value="man">
+                <option value="women">
+                <option value="all">
+            </datalist>
+        </div>
+        <div class="form__input">
+            <h4>Kids</h4>
+            <input type="radio" name="kids" value="yes">
+            <input type="radio" name="kids" value="no">
+        </div>
+        <div class="form__input">
+            <h4>Smoking</h4>
+            <input type="radio" name="smoking" value="yes">
+            <input type="radio" name="smoking" value="no">
+        </div>
+        <div class="form__input">
+            <h4>Education</h4>
+            <input list="education" name="education-list">
+            <datalist id="education">
+                <option value="high school">
+                <option value="university">
+                <option value="didnt study">
+                <option value="all">
+            </datalist>
+        </div>
+        <div class="form__input">
+            <h4>Relationship</h4>
+            <input list="relationship" name="relationship-list">
+            <datalist id="relationship">
+                <option value="friendship">
+                <option value="love">
+                <option value="affair">
+                <option value="all">
+            </datalist>
+        </div>
+        <div class="form__input">
+            <h4>religious</h4>
+            <input list="religious" name="religious-list">
+            <datalist id="religious">
+                <option value="religious">
+                <option value="secular">
+                <option value="traditional">
+                <option value="all">
+            </datalist>
+        </div>
+    </form>
+</body>
+</html>

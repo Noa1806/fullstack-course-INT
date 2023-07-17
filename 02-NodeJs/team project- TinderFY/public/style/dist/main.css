@@ -1,0 +1,157 @@
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+@media (max-width: 768px) {
+  html, body {
+    background-size: contain;
+  }
+}
+.mainNav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgba(230, 82, 82, 0.5);
+  color: #0a0a0a;
+  font-weight: bold;
+}
+
+.navBar__ul {
+  text-align: center;
+  font-size: 24px;
+  list-style: none;
+  display: flex;
+  gap: 45px;
+}
+
+.navBar__ul__li {
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.navBar__ul__li:hover {
+  transform: scale(1.2);
+}
+
+.mainNav__userCard {
+  display: flex;
+  align-items: center;
+  margin-right: 20px;
+}
+
+.mainNav__userCard__top {
+  margin-right: 10px;
+}
+
+.mainNav__userCard__img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background-position: center;
+}
+
+.mainNav__userCard__h2 {
+  font-size: 22px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.delete {
+  width: 30px;
+  height: 30px;
+  position: relative;
+  top: 90px;
+  right: -110px;
+  background-image: url("https://cdn-icons-png.flaticon.com/512/1345/1345874.png");
+  background-size: 100%;
+  cursor: pointer;
+}
+
+.edit {
+  width: 30px;
+  height: 30px;
+  position: relative;
+  top: 90px;
+  right: -190px;
+  background: url("https://www.pdfzorro.com/Images/IconsFunktionen/pdf-edit.webp");
+  background-size: 100%;
+  cursor: pointer;
+}
+
+.imageUpload {
+  width: 30px;
+  height: 30px;
+  position: relative;
+  top: 90px;
+  right: -30px;
+  background: url("https://static.thenounproject.com/png/625182-200.png");
+  background-size: 100%;
+  cursor: pointer;
+}
+
+img {
+  width: 80%;
+  height: 80%;
+}
+
+@media (max-width: 768px) {
+  .mainNav {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .navBar__ul {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .mainNav__userCard {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .mainNav__userCard__img {
+    width: 150px;
+    height: 150px;
+  }
+}
+/* Styles for even smaller screens */
+@media (max-width: 480px) {
+  .navBar__ul__li {
+    font-size: 20px;
+  }
+
+  .mainNav__userCard__img {
+    width: 100px;
+    height: 100px;
+  }
+}
+@keyframes slideAnimation {
+  0% {
+    transform: translateX(0) rotateY(0);
+  }
+  50% {
+    transform: translateX(90vw) rotateY(0);
+  }
+  51% {
+    transform: translateX(90vw) rotateY(180deg);
+  }
+  100% {
+    transform: translateX(0) rotateY(180deg);
+  }
+}
+.image1 {
+  width: 100px;
+  position: absolute;
+  top: 0;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  animation: slideAnimation 20s linear infinite;
+}
