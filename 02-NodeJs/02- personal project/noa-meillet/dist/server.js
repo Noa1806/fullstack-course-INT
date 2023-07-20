@@ -25,7 +25,8 @@ app.use('/api/guests', guestsRoute_1["default"]);
 var expensesRoute_1 = require("./API/expenses/expensesRoute");
 app.use('/api/expenses', expensesRoute_1["default"]);
 app.use(express_1["default"].json());
+app.use(express_1["default"].static("./client"));
 app.use(express_1["default"].static("./client/loginPage"));
 app.listen(4000, function () {
-    console.log("server listen on port 3000");
+    console.log("server listen on port 4000");
 });

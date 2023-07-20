@@ -12,32 +12,20 @@
 </head>
 <body>
     <div class="nav-bar"></div>
-    <div class="login-form">
-        <h2>Sign Up</h2>
-        <form class="sign-up-form" onsubmit="createUser(event)">
-            <div class="sign-up-form__input">
-                <h4>Name Of The Bride</h4>
-                <input type="text" name="nameOfBride" placeholder="Bride's name..." required>
-            </div>
-            <div class="sign-up-form__input">
-                <h4>Name Of The Groom</h4>
-                <input type="text" name="nameOfGroom" placeholder="Groom's name..." required>
-            </div>
-            <div class="sign-up-form__input">
-                <h4>Wedding Date</h4>
-                <input type="date" name="weddingDate" placeholder="Wedding Date...">
-            </div>
-            <div class="sign-up-form__input">
+    <div class="logIn-form">
+        <h2>Login</h2>
+        <form class="log-in-form" onsubmit="createUser(event)">
+            <div class="log-in-form__input">
                 <h4>Username</h4>
                 <input type="text" name="username" placeholder="Username..." required>
             </div>
-            <div class="sign-up-form__input">
+            <div class="log-in-form__input">
                 <h4>Password</h4>
                 <input type="password" name="password" placeholder="Password..." required>
             </div>
-            <button type="submit" class="btn">Sign Up</button>
+            <button type="submit" class="btn">Login</button>
         </form>
     </div>
-    <h5 onclick="showSignInForm()">Sign In</h5>
+    <h5 onclick="showRegisterForm()">Not registred?<span id="link">Create an account!</span></h5>
 </body>
 </html>

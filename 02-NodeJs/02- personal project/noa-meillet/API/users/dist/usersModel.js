@@ -6,7 +6,7 @@ exports.UserSchema = new mongoose_1.Schema({
     nameOfBride: { require: true, type: String },
     nameOfGroom: { require: true, type: String },
     weddingDate: { require: true, type: Date },
-    username: { require: true, type: String },
+    username: { require: true, type: String, unique: true },
     password: { require: true, type: String }
 });
 var UserModel = mongoose_1["default"].model("users", exports.UserSchema);

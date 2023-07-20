@@ -1,12 +1,11 @@
 import UserModel from "./usersModel";
-/*import jwt from "jwt-simple";
-const secret = process.env.JWT_SECRET;*/
+import jwt from "jwt-simple";
+const secret = process.env.JWT_SECRET;
 
 export const addUser = async (req: any, res: any) => {
   try {
     const { nameOfBride, nameOfGroom, weddingDate, username, password } =
       req.body;
-    console.log(username, password);
 
     //add users to DB;
     const userDB = await UserModel.create({
@@ -16,9 +15,7 @@ export const addUser = async (req: any, res: any) => {
       username,
       password,
     });
-
     console.log(userDB);
-
     res.status(201).send({ ok: true });
   } catch (error: any) {
     console.error(error);
@@ -31,18 +28,17 @@ export const login = async (req: any, res: any) => {
     const { username, password } = req.body;
     console.log(username, password);
 
-    //add users to DB;
     const userDB = await UserModel.findOne({ username, password });
 
     if (!userDB) throw new Error("Username or password are inncorect");
 
-    /*if (!secret) throw new Error("Missing jwt secret");
+    if (!secret) throw new Error("Missing jwt secret");
 
     const token = jwt.encode({ userId: userDB._id, role: "public" }, secret);
     console.log(token);
 
     res.cookie("user", token, { maxAge: 50000000, httpOnly: true });
-    */
+
     res.status(201).send({ ok: true });
   } catch (error: any) {
     console.error(error);

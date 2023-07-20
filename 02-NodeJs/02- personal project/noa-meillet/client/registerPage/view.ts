@@ -1,0 +1,1 @@
+const registerPage: HTMLFormElement|any = document.querySelector(".register-page");

@@ -38,8 +38,8 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 exports.__esModule = true;
 exports.login = exports.addUser = void 0;
 var usersModel_1 = require("./usersModel");
-/*import jwt from "jwt-simple";
-const secret = process.env.JWT_SECRET;*/
+var jwt_simple_1 = require("jwt-simple");
+var secret = process.env.JWT_SECRET;
 exports.addUser = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
     var _a, nameOfBride, nameOfGroom, weddingDate, username, password, userDB, error_1;
     return __generator(this, function (_b) {
@@ -47,7 +47,6 @@ exports.addUser = function (req, res) { return __awaiter(void 0, void 0, void 0,
             case 0:
                 _b.trys.push([0, 2, , 3]);
                 _a = req.body, nameOfBride = _a.nameOfBride, nameOfGroom = _a.nameOfGroom, weddingDate = _a.weddingDate, username = _a.username, password = _a.password;
-                console.log(username, password);
                 return [4 /*yield*/, usersModel_1["default"].create({
                         nameOfBride: nameOfBride,
                         nameOfGroom: nameOfGroom,
@@ -70,7 +69,7 @@ exports.addUser = function (req, res) { return __awaiter(void 0, void 0, void 0,
     });
 }); };
 exports.login = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var _a, username, password, userDB, error_2;
+    var _a, username, password, userDB, token, error_2;
     return __generator(this, function (_b) {
         switch (_b.label) {
             case 0:
@@ -82,13 +81,11 @@ exports.login = function (req, res) { return __awaiter(void 0, void 0, void 0, f
                 userDB = _b.sent();
                 if (!userDB)
                     throw new Error("Username or password are inncorect");
-                /*if (!secret) throw new Error("Missing jwt secret");
-            
-                const token = jwt.encode({ userId: userDB._id, role: "public" }, secret);
+                if (!secret)
+                    throw new Error("Missing jwt secret");
+                token = jwt_simple_1["default"].encode({ userId: userDB._id, role: "public" }, secret);
                 console.log(token);
-            
                 res.cookie("user", token, { maxAge: 50000000, httpOnly: true });
-                */
                 res.status(201).send({ ok: true });
                 return [3 /*break*/, 3];
             case 2:

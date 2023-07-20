@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wedding Planner- Login</title>
+    <link rel="stylesheet" href="./dist/style.css">
+    <script src="./dist/control.js" defer></script>
+    <script src="./dist/model.js" defer></script>
+    <script src="./dist/view.js" defer></script>
+</head>
+<body>
+    <div class="nav-bar"></div>
+    <div class="register-page">
+        <h2>Sign Up</h2>
+        <form class="sign-up-form" onsubmit="createUser(event)">
+            
+                <h4 class="sign-up-form__lable">Name Of The Bride</h4>
+                <input class="sign-up-form__input" type="text" name="nameOfBride" placeholder="Bride's name..." required>                
+
+                <h4 class="sign-up-form__lable">Name Of The Groom</h4>
+                <input class="sign-up-form__input" type="text" name="nameOfGroom" placeholder="Groom's name..." required>
+            
+            
+                <h4 class="sign-up-form__lable">Wedding Date</h4>
+                <input class="sign-up-form__input" type="date" name="weddingDate" placeholder="Wedding Date...">
+            
+            
+                <h4 class="sign-up-form__lable">Username</h4>
+                <input class="sign-up-form__input" type="text" name="username" placeholder="Username..." required>
+            
+            
+                <h4 class="sign-up-form__lable">Password</h4>
+                <input class="sign-up-form__input" type="password" name="password" placeholder="Password..." required>
+            
+            <button type="submit" class="btn">Create our account</button>
+        </form>
+    </div>
+</body>
+</html>

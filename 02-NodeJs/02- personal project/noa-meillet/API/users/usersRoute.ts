@@ -8,7 +8,7 @@ import {
 
 router
   .post("/add-user", addUser)
-  .post('/login',login)
+  .post('/login',login);
   //.get('/get-user',getUser);
 
 export default router;

@@ -32,6 +32,7 @@ app.use('/api/expenses', expensesRouter);
 
 
 app.use(express.json());
+app.use(express.static("./client"));
 app.use(express.static("./client/loginPage"));
 
 
