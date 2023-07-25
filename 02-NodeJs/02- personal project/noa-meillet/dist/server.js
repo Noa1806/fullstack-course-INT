@@ -3,6 +3,7 @@ exports.__esModule = true;
 var express_1 = require("express");
 var app = express_1["default"]();
 var mongoose_1 = require("mongoose");
+var body_parser_1 = require("body-parser");
 var dotenv = require("dotenv");
 dotenv.config();
 var cookie_parser_1 = require("cookie-parser");
@@ -18,6 +19,7 @@ if (uri) {
 else {
     console.log("No URI to DB");
 }
+app.use(body_parser_1["default"].json()); // This will parse JSON data in the request body
 var usersRoute_1 = require("./API/users/usersRoute");
 app.use('/api/users', usersRoute_1["default"]);
 var guestsRoute_1 = require("./API/guests/guestsRoute");
@@ -27,6 +29,9 @@ app.use('/api/expenses', expensesRoute_1["default"]);
 app.use(express_1["default"].json());
 app.use(express_1["default"].static("./client"));
 app.use(express_1["default"].static("./client/loginPage"));
+app.listen(3000, function () {
+    console.log('Server is running on port 3000');
+});
 app.listen(4000, function () {
     console.log("server listen on port 4000");
 });

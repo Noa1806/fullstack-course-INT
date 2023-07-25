@@ -21,12 +21,10 @@ function login(ev) {
             },
             body: JSON.stringify(user)
         })
-            .then(function (res) { return res.json(); })
-            .then(function (data) {
-            console.log(data);
-        })["catch"](function (error) {
+            .then(function (res) { return res.json(); })["catch"](function (error) {
             console.error(error);
         });
+        window.location.href = "../mainPage/index.html";
     }
     catch (error) {
         console.error(error);

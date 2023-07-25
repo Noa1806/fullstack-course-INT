@@ -1,6 +1,7 @@
 import express from "express";
 const app = express();
 import mongoose, { Schema } from "mongoose";
+import bodyParser from 'body-parser';
 import * as dotenv from "dotenv";
 dotenv.config();
 import cookieParser from 'cookie-parser';
@@ -19,6 +20,8 @@ if (uri) {
   console.log("No URI to DB");
 }
 
+app.use(bodyParser.json()); // This will parse JSON data in the request body
+
 import usersRouter from './API/users/usersRoute';
 app.use('/api/users', usersRouter);
 
@@ -36,6 +39,9 @@ app.use(express.static("./client"));
 app.use(express.static("./client/loginPage"));
 
 
+app.listen(3000, () => {
+  console.log('Server is running on port 3000');
+});
 
 
 app.listen(4000, () => {

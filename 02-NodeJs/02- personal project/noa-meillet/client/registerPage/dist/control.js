@@ -24,8 +24,6 @@ function createUser(ev) {
             password: password
         };
         console.log(user);
-        if (!user)
-            throw new Error("no data to create user");
         //send to server:
         fetch("/api/users/add-user", {
             method: "POST",
@@ -37,20 +35,20 @@ function createUser(ev) {
         })
             .then(function (res) {
             res.json();
+            if (!registerPage)
+                throw new Error("register page element is not found");
+            registerPage.html = "<div class=\"register-complete--msg\">\n        <h3>Congragulation!</h3>\n        <h4>We created your account</h4>\n        <button onclick=\"showLoginPage()\" class=\"btn\">LogIn</button>\n        </div>";
         });
-        if (!registerPage)
-            throw new Error("register page element is not found");
-        registerPage.html = "<div class=\"register-complete--msg\">\n        <h3>Congragulation!</h3>\n        <h4>We created your account</h4>\n        <button onclick=\"showLoginPage()\" class=\"btn\">LogIn</button>\n        </div>";
     }
     catch (error) {
         console.error('error- can not create user');
     }
-    function showLoginPage() {
-        try {
-            window.location.href = "../loginPage/index.html";
-        }
-        catch (error) {
-            console.error("The login page is not found");
-        }
+}
+function showLoginPage() {
+    try {
+        window.location.href = "../loginPage/index.html";
+    }
+    catch (error) {
+        console.error("The login page is not found");
     }
 }

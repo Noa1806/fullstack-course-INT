@@ -23,12 +23,10 @@ function login(ev: any) {
       body: JSON.stringify(user),
     })
       .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-      })
       .catch((error) => {
         console.error(error);
       });
+      window.location.href= "../mainPage/index.html";
   } catch (error) {
     console.error(error);
   }
