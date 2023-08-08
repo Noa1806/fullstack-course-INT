@@ -21,8 +21,8 @@ else {
 }
 app.use(body_parser_1["default"].json()); // This will parse JSON data in the request body
 app.use(express_1["default"].json());
-app.use(express_1["default"].static("./client"));
-/*app.use(express.static("./client/loginPage"));*/
+app.use(express_1["default"].static("./"));
+//app.use(express.static("./client"));
 var usersRoute_1 = require("./API/users/usersRoute");
 app.use('/api/users', usersRoute_1["default"]);
 var guestsRoute_1 = require("./API/guests/guestsRoute");

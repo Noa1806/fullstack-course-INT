@@ -24,8 +24,9 @@ app.use(bodyParser.json()); // This will parse JSON data in the request body
 
 
 app.use(express.json());
-app.use(express.static("./client"));
-/*app.use(express.static("./client/loginPage"));*/
+app.use(express.static("./"));
+//app.use(express.static("./client"));
+
 
 
 import usersRouter from './API/users/usersRoute';
