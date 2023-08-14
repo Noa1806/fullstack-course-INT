@@ -8,6 +8,7 @@ var dotenv = require("dotenv");
 dotenv.config();
 var cookie_parser_1 = require("cookie-parser");
 var uri = process.env.MONGODB_URI;
+app.use(express_1["default"].json());
 app.use(cookie_parser_1["default"]());
 if (uri) {
     mongoose_1["default"]
@@ -20,9 +21,7 @@ else {
     console.log("No URI to DB");
 }
 app.use(body_parser_1["default"].json()); // This will parse JSON data in the request body
-app.use(express_1["default"].json());
-app.use(express_1["default"].static("./"));
-//app.use(express.static("./client"));
+app.use(express_1["default"].static("./client"));
 var usersRoute_1 = require("./API/users/usersRoute");
 app.use('/api/users', usersRoute_1["default"]);
 var guestsRoute_1 = require("./API/guests/guestsRoute");

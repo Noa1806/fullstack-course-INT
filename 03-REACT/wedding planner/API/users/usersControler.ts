@@ -30,8 +30,11 @@ export const login = async (req: any, res: any) => {
 
     const userDB = await UserModel.findOne({ username, password });
 
-    if (!userDB) throw new Error("Username or password are inncorect");
+    if (!userDB) {
+      return res.status(401).json({ message: "username or password are not correct" });
+    }
 
+    const secret = process.env.JWT_SECRET;
     if (!secret) throw new Error("Missing jwt secret");
 
     const token = jwt.encode({ userId: userDB._id, role: "public" }, secret);

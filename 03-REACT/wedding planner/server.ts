@@ -7,6 +7,7 @@ dotenv.config();
 import cookieParser from 'cookie-parser';
 const uri: string | undefined = process.env.MONGODB_URI;
 
+app.use(express.json());
 app.use(cookieParser())
 
 if (uri) {
@@ -23,9 +24,7 @@ if (uri) {
 app.use(bodyParser.json()); // This will parse JSON data in the request body
 
 
-app.use(express.json());
-app.use(express.static("./"));
-//app.use(express.static("./client"));
+app.use(express.static("./client"));
 
 
 

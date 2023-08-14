@@ -69,7 +69,7 @@ exports.addUser = function (req, res) { return __awaiter(void 0, void 0, void 0,
     });
 }); };
 exports.login = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var _a, username, password, userDB, token, error_2;
+    var _a, username, password, userDB, secret_1, token, error_2;
     return __generator(this, function (_b) {
         switch (_b.label) {
             case 0:
@@ -79,11 +79,13 @@ exports.login = function (req, res) { return __awaiter(void 0, void 0, void 0, f
                 return [4 /*yield*/, usersModel_1["default"].findOne({ username: username, password: password })];
             case 1:
                 userDB = _b.sent();
-                if (!userDB)
-                    throw new Error("Username or password are inncorect");
-                if (!secret)
+                if (!userDB) {
+                    return [2 /*return*/, res.status(401).json({ message: "username or password are not correct" })];
+                }
+                secret_1 = process.env.JWT_SECRET;
+                if (!secret_1)
                     throw new Error("Missing jwt secret");
-                token = jwt_simple_1["default"].encode({ userId: userDB._id, role: "public" }, secret);
+                token = jwt_simple_1["default"].encode({ userId: userDB._id, role: "public" }, secret_1);
                 console.log(token);
                 res.cookie("user", token, { maxAge: 50000000, httpOnly: true });
                 res.status(201).send({ ok: true });
