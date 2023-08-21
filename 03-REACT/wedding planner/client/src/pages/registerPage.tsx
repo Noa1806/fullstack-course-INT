@@ -33,21 +33,12 @@ function RegisterPage() {
             nameOfGroom,
             weddingDate,
             username,
-            password,
+            password
           };
-          console.log(user);
-
-          try {
-            const response = await axios.post('/api/users/add-user', user);
+            const response = await axios.post("/api/users/add-user", user);
             const data = response.data;
-            const { ok } = data;
-            if (ok) {
-              navigate("/main")
-            }
+            if (data.ok) navigate("/login");
             console.log(data);
-          } catch (error) {
-            console.error(error);
-          }
         } catch (error) {
           console.error(error);
         }

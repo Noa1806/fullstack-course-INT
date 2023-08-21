@@ -80,7 +80,9 @@ exports.login = function (req, res) { return __awaiter(void 0, void 0, void 0, f
             case 1:
                 userDB = _b.sent();
                 if (!userDB) {
-                    return [2 /*return*/, res.status(401).json({ message: "username or password are not correct" })];
+                    return [2 /*return*/, res
+                            .status(401)
+                            .json({ message: "username or password are not correct" })];
                 }
                 secret_1 = process.env.JWT_SECRET;
                 if (!secret_1)

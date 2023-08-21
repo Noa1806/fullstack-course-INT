@@ -2,6 +2,7 @@
 exports.__esModule = true;
 var express_1 = require("express");
 var app = express_1["default"]();
+//import cors from "cors";
 var mongoose_1 = require("mongoose");
 var body_parser_1 = require("body-parser");
 var dotenv = require("dotenv");

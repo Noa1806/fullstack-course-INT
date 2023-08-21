@@ -19,11 +19,9 @@ const LoginPage= ()  => {
 
         const userLogin = {username, password };
 
-          const {data} = await axios.post('/api/users/login', userLogin);
-          const { ok } = data;
-          if (ok) {
-            navigate("/main")
-          }
+          const response = await axios.post("/api/users/login", userLogin);
+          const data = response.data;
+          if (data.ok) navigate("/main");
       } catch (error) {
         console.error(error);
       }

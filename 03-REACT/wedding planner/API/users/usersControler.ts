@@ -13,7 +13,7 @@ export const addUser = async (req: any, res: any) => {
       nameOfGroom,
       weddingDate,
       username,
-      password,
+      password
     });
     console.log(userDB);
     res.status(201).send({ ok: true });
@@ -31,7 +31,9 @@ export const login = async (req: any, res: any) => {
     const userDB = await UserModel.findOne({ username, password });
 
     if (!userDB) {
-      return res.status(401).json({ message: "username or password are not correct" });
+      return res
+        .status(401)
+        .json({ message: "username or password are not correct" });
     }
 
     const secret = process.env.JWT_SECRET;

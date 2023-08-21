@@ -1,5 +1,6 @@
 import express from "express";
 const app = express();
+//import cors from "cors";
 import mongoose from "mongoose";
 import bodyParser from 'body-parser';
 import * as dotenv from "dotenv";
@@ -8,7 +9,8 @@ import cookieParser from 'cookie-parser';
 const uri: string | undefined = process.env.MONGODB_URI;
 
 app.use(express.json());
-app.use(cookieParser())
+app.use(cookieParser());
+
 
 if (uri) {
   mongoose
@@ -22,7 +24,6 @@ if (uri) {
 }
 
 app.use(bodyParser.json()); // This will parse JSON data in the request body
-
 
 app.use(express.static("./client"));
 
