@@ -12,6 +12,8 @@ import RegisterPage from './pages/registerPage.tsx';
 import ExpensesPage from './pages/expensesPage.tsx';
 import GuestsPage from './pages/guestsPage.tsx';
 import MainPage from './pages/mainPage.tsx';
+import AboutUsPage from './pages/aboutUsPage.tsx';
+import CataloguePage from './pages/cataloguePage.tsx';
 
 const router = createBrowserRouter([
   {
@@ -43,6 +45,18 @@ const router = createBrowserRouter([
   {
     path: "/main",
     element: <MainPage />,
+    errorElement: <ErrorPage />,
+  }
+  ,
+  {
+    path: "/about",
+    element: <AboutUsPage />,
+    errorElement: <ErrorPage />,
+  }
+  ,
+  {
+    path: "/catalogue",
+    element: <CataloguePage />,
     errorElement: <ErrorPage />,
   }
 ]);

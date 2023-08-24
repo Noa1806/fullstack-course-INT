@@ -1,0 +1,80 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@600&display=swap');
+
+.navBar {
+    background-color: #1687A7;
+    min-height: 5em;
+    width:96%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50px;
+    
+    .navLable{
+        font-family: 'Caveat', cursive;
+        font-size: 2em;
+        padding-right: 5%;
+        color: #ecf0f1;
+        text-decoration: none;
+        text-transform: uppercase;
+        transition: 0.5s;
+    }
+
+    .navLable::after {
+        content: "";
+        transform: scaleX(0);
+        transform-origin: right;
+        transition: transform 0.4s;
+      }
+
+    .navLable:hover{
+        color: #276678;
+    }
+    
+    .navLable:hover:after {
+        transform: scaleX(1);
+        transform-origin: left;
+        transition: transform 0.7s;
+      }
+    
+} 
+
+@media (max-width: 650px){
+    .navBar{
+        background-color: #1687A7;
+        min-height: 3em;
+        width:96%;
+        display: flex;
+        justify-content:center;
+        align-items: center;
+
+        .navLable{
+            font-family: 'Caveat', cursive;
+            font-size: 1.5em;
+            padding: 2%;
+            color:white;
+        }
+
+    }
+}
+
+@media (max-width: 445px){
+    .navBar{
+        background-color: #1687A7;
+        min-height: 2em;
+        width:96%;
+        min-width:max-content;
+        display: flex;
+        flex-direction: row;
+        justify-content:center;
+        align-items: center;
+
+        .navLable{
+            font-family: 'Caveat', cursive;
+            font-size: 1.2em;
+            padding-right: 3%;
+            color:#D3E0EA;
+           
+        }
+
+    }
+}
