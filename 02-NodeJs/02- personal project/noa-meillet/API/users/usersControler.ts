@@ -2,26 +2,26 @@ import UserModel from "./usersModel";
 import jwt from "jwt-simple";
 const secret = process.env.JWT_SECRET;
 
-export const addUser = async (req: any, res: any) => {
-  try {
-    const { nameOfBride, nameOfGroom, weddingDate, username, password } =
-      req.body;
 
-    //add users to DB;
-    const userDB = await UserModel.create({
-      nameOfBride,
-      nameOfGroom,
-      weddingDate,
-      username,
-      password,
-    });
-    console.log(userDB);
-    res.status(201).send({ ok: true });
-  } catch (error: any) {
+export async function addUser (req: any, res: any) {
+  try {
+    
+    const { nameOfBride, nameOfGroom, weddingDate, username, password } =
+      req.body; 
+      const userDB = await UserModel.create({
+        nameOfBride,
+        nameOfGroom,
+        weddingDate,
+        username,
+        password,
+      });
+    res.send({ ok: true, user: userDB });
+     } catch (error:any) {
     console.error(error);
-    res.status(500).send({ error: error.message });
+    res.status(500).send({ ok: false, error });
   }
-};
+}
+
 
 export const login = async (req: any, res: any) => {
   try {

@@ -40,34 +40,36 @@ exports.login = exports.addUser = void 0;
 var usersModel_1 = require("./usersModel");
 var jwt_simple_1 = require("jwt-simple");
 var secret = process.env.JWT_SECRET;
-exports.addUser = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var _a, nameOfBride, nameOfGroom, weddingDate, username, password, userDB, error_1;
-    return __generator(this, function (_b) {
-        switch (_b.label) {
-            case 0:
-                _b.trys.push([0, 2, , 3]);
-                _a = req.body, nameOfBride = _a.nameOfBride, nameOfGroom = _a.nameOfGroom, weddingDate = _a.weddingDate, username = _a.username, password = _a.password;
-                return [4 /*yield*/, usersModel_1["default"].create({
-                        nameOfBride: nameOfBride,
-                        nameOfGroom: nameOfGroom,
-                        weddingDate: weddingDate,
-                        username: username,
-                        password: password
-                    })];
-            case 1:
-                userDB = _b.sent();
-                console.log(userDB);
-                res.status(201).send({ ok: true });
-                return [3 /*break*/, 3];
-            case 2:
-                error_1 = _b.sent();
-                console.error(error_1);
-                res.status(500).send({ error: error_1.message });
-                return [3 /*break*/, 3];
-            case 3: return [2 /*return*/];
-        }
+function addUser(req, res) {
+    return __awaiter(this, void 0, void 0, function () {
+        var _a, nameOfBride, nameOfGroom, weddingDate, username, password, userDB, error_1;
+        return __generator(this, function (_b) {
+            switch (_b.label) {
+                case 0:
+                    _b.trys.push([0, 2, , 3]);
+                    _a = req.body, nameOfBride = _a.nameOfBride, nameOfGroom = _a.nameOfGroom, weddingDate = _a.weddingDate, username = _a.username, password = _a.password;
+                    return [4 /*yield*/, usersModel_1["default"].create({
+                            nameOfBride: nameOfBride,
+                            nameOfGroom: nameOfGroom,
+                            weddingDate: weddingDate,
+                            username: username,
+                            password: password
+                        })];
+                case 1:
+                    userDB = _b.sent();
+                    res.send({ ok: true, user: userDB });
+                    return [3 /*break*/, 3];
+                case 2:
+                    error_1 = _b.sent();
+                    console.error(error_1);
+                    res.status(500).send({ ok: false, error: error_1 });
+                    return [3 /*break*/, 3];
+                case 3: return [2 /*return*/];
+            }
+        });
     });
-}); };
+}
+exports.addUser = addUser;
 exports.login = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
     var _a, username, password, userDB, token, error_2;
     return __generator(this, function (_b) {

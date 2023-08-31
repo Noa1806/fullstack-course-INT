@@ -1,0 +1,164 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald&display=swap');
+
+.form {
+    background-color: #E6D2AA;
+    border-radius: 20px;
+    box-sizing: border-box;
+    padding: 10px;
+    width: 50%;
+    margin: 2% auto 0 auto;
+
+    
+    .title {
+        color: #42032C;
+        font-size: 2.5rem;
+        font-weight: 600;
+        margin-top: 3%;
+    }
+    
+    .subtitle {
+        color: #42032C;
+        font-size: 1rem;
+        margin-bottom: 10%;
+    }
+    
+    .input-container {
+        height: 4rem;
+        position: relative;
+        width: 100%;
+        margin: 5% 0;
+
+        
+        .ic {
+            margin-top: 7%;
+        }
+        
+        .input {
+            background-color: rgba(255, 255, 255, 0.855);
+            border-radius: 12px;
+            border: 0;
+            box-sizing: border-box;
+            color: black;
+            font-size: 1.5rem;
+            height: 100%;
+            outline: 0;
+            padding: 4px 20px 0;
+            width: 100%;
+        }
+        
+        .cut {
+            background-color: #42032C;
+            border-radius: 10px;
+            height: 35%;
+            left: 2%;
+            position: absolute;
+            top: -30%;
+            transform: translateY(0);
+            transition: transform 200ms;
+            width:6.5rem;
+        }
+        
+        .input:focus ~ .cut,
+        .input:not(:placeholder-shown) ~ .cut {
+            transform: translateY(0.4rem) translateX(0.5rem);
+        }
+        
+        .placeholder {
+            color: #65657b;
+            font-family: sans-serif;
+            left: 20px;
+            line-height: 14px;
+            pointer-events: none;
+            position: absolute;
+            transform-origin: 0 50%;
+            transition: transform 200ms, color 200ms;
+            top: 20px;
+        }
+            
+        .input:focus ~ .placeholder,
+        .input:not(:placeholder-shown) ~ .placeholder {
+            transform: translateY(-30px) translateX(10px) scale(0.75);
+        }
+        
+        .input:focus ~ .placeholder {
+            color: #D36B00;
+        }
+        
+    }
+
+    .button-paper {
+        align-self: center;
+        background-color: rgba(255, 255, 255, 0.738);
+        background-image: none;
+        background-position: 0 90%;
+        background-repeat: repeat no-repeat;
+        background-size: 4px 3px;
+        border-radius: 15px 225px 255px 15px 15px 255px 225px 15px;
+        border: solid 2px #D36B00;
+        box-shadow: rgba(0, 0, 0, .2) 15px 28px 25px -18px;
+        box-sizing: border-box;
+        cursor: pointer;
+        display: inline-block;
+        font-family: 'Oswald', sans-serif;
+        font-size: 1.2rem;
+        line-height: 7%;
+        outline: none;
+        padding: .75rem;
+        margin: 3%;
+        text-decoration: none;
+        transition: all 235ms ease-in-out;
+        border-bottom-left-radius: 5% 10%;
+        border-bottom-right-radius: 5% 10%;
+        border-top-left-radius: 5% 10%;
+        border-top-right-radius: 5% 10%;
+        user-select: none;
+        -webkit-user-select: none;
+        touch-action: manipulation;
+    }
+    
+    .button-paper:hover {
+        box-shadow: rgba(0, 0, 0, .3) 2px 8px 8px -6px;
+        transform: translate3d(0, 2px, 0);
+    }
+    
+    .button-paper:focus {
+        box-shadow: rgba(0, 0, 0, .3) 2px 8px 4px -6px;
+    }
+  
+  }
+  
+  
+
+  
+@media (max-width: 750px){
+    .form{
+        width:70%;
+        transition: transform 3s;
+
+        .input-container{
+            margin-top: 10%;
+        }
+    }
+}
+@media (max-width: 430px){
+    .form{
+        width:70%;
+        transition: transform 3s;
+
+        .input-container{
+            margin-top: 15%;
+            height: 3rem;
+            
+            .input:focus ~ .placeholder,
+            .input:not(:placeholder-shown) ~ .placeholder {
+                transform: translateY(-29px) translateX(-8px) scale(0.75);
+            }
+            
+            .cut {
+                left: 0;
+                width:5.5rem;
+            }
+            
+        }
+    }
+}

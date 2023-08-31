@@ -3,24 +3,19 @@
 :root {
   font-family: 'Kodchasan', sans-serif;
   line-height: 1.5;
-  font-weight: 400;
   max-width:100%;
-  
-  color: black;
-  background-color: #F6F5F5;
-
+  color: #42032C;
+  background-color: rgba(253, 234, 210, 0.286);
   font-synthesis: none;
-  
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-text-size-adjust: 100%;
+
 }
 
 body {
   text-decoration: inherit;
   padding:2% ;
-  vertical-align: middle;
   max-width:fit-content;
+  overflow-y: scroll;
+  min-width: 330px ;
 }
 
 h1 {

@@ -1,6 +1,9 @@
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import NavBar from '../components/navBar/NavBar';
+import '../style/dist/register.css';
+//import { create } from 'domain';
 
 interface User {
     nameOfBride: string;
@@ -47,31 +50,40 @@ function RegisterPage() {
        
   return (
 
-        <div>
-        <h2>Sign Up</h2>
-        <form className="sign-up-form" onSubmit={createUser}>
-            
-                <h4 className="sign-up-form__lable">Name Of The Bride</h4>
-                <input className="sign-up-form__input" type="text" name="nameOfBride" placeholder="Bride's name..." required/>                
-
-                <h4 className="sign-up-form__lable">Name Of The Groom</h4>
-                <input className="sign-up-form__input" type="text" name="nameOfGroom" placeholder="Groom's name..." required/>
-            
-            
-                <h4 className="sign-up-form__lable">Wedding Date</h4>
-                <input className="sign-up-form__input" type="date" name="weddingDate" placeholder="Wedding Date..." required/>
-            
-            
-                <h4 className="sign-up-form__lable">Username</h4>
-                <input className="sign-up-form__input" type="text" name="username" placeholder="Username..." required/>
-            
-            
-                <h4 className="sign-up-form__lable">Password</h4>
-                <input className="sign-up-form__input" type="password" name="password" placeholder="Password..." required/>
-            
-            <button type="submit" className="btn">Create our account</button>
+    <div>
+      <NavBar />
+        <form className="form" onSubmit={createUser}>
+          <div className="title">Welcome</div>
+          <div className="subtitle">Let's create your account!</div>
+          <div className="input-container ic">
+            <input id="brideName" className="input" type="text" placeholder=" " />
+            <div className="cut"></div>
+            <label htmlFor="brideName" className="placeholder">Bride name</label>
+          </div>
+          <div className="input-container ic">
+            <input id="groomName" className="input" type="text" placeholder=" " />
+            <div className="cut"></div>
+            <label htmlFor="groomName" className="placeholder">Groom name</label>
+          </div>
+          <div className="input-container ic">
+            <input id="WeddingDate" className="input" type="date" placeholder=" " />
+            <div className="cut"></div>
+            <label htmlFor="WeddingDate" className="placeholder">Wedding date</label>
+          </div>
+          <div className="input-container ic">
+            <input id="username" className="input" type="text" placeholder=" " />
+            <div className="cut"></div>
+            <label htmlFor="username" className="placeholder">User name</label>
+          </div>
+          <div className="input-container ic">
+            <input id="password" className="input" type="password" placeholder=" " />
+            <div className="cut"></div>
+            <label htmlFor="password" className="placeholder">Password</label>
+          </div>
+          <input className="button-paper" type='submit' value={'Create your account'} />
+          <Link to='/login'><span>Already have an account? </span>Sign in here!</Link>
         </form>
-        <Link to='/login'><span>Already have an account? </span>Sign in here!</Link>
+     
     </div>
     );
 }

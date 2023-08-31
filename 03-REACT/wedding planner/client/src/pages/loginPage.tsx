@@ -3,6 +3,8 @@
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import NavBar from '../components/navBar/NavBar';
+import '../style/dist/login.css';
 
 const LoginPage= ()  => {
 
@@ -21,31 +23,37 @@ const LoginPage= ()  => {
 
           const response = await axios.post("/api/users/login", userLogin);
           const data = response.data;
-          if (data.ok) navigate("/main");
+          if (data.ok) navigate("/main", {state:username});
       } catch (error) {
         console.error(error);
       }
     }
   
   return (
-    <div id='login-page'>
-      <div className='logIn-form'>
-        <h2>Login</h2>
-        <form className='log-in-form' onSubmit={login}>
-            <div className='log-in-form__input'>
-                <h4>Username</h4>
-                <input type='text' name='username' placeholder='Username...' required/>
-            </div>
-            <div className='log-in-form__input'>
-                <h4>Password</h4>
-                <input type='password' name='password' placeholder='Password...' required/>
-            </div>
-            <button type='submit' className='btn'>Login</button>
-        </form>
-    </div>
-    <Link to='/register'><span className='noLink'>Not registred?</span>Create an account!</Link>
+    <div>
 
-    </div>
+    <NavBar />
+    <form className="form" onSubmit={login}>
+      <div className="title">Welcome</div>
+      <div className="subtitle">Log in to your account!</div>
+      <div className="input-container ic">
+        <input id="username" className="input" type="text" placeholder=" " />
+        <div className="cut"></div>
+        <label htmlFor="username" className="placeholder">User name</label>
+      </div>
+      <div className="input-container ic">
+        <input id="password" className="input" type="password" placeholder=" " />
+        <div className="cut"></div>
+        <label htmlFor="password" className="placeholder">Password</label>
+      </div>
+      <input className="button-paper" type='submit' value={'Log to your account'} />
+      <br /> 
+      <Link to='/register'><span className='noLink'>Not registred?</span>Create an account!</Link>
+    </form>
+
+            
+</div>
+    
   );
 }
 
