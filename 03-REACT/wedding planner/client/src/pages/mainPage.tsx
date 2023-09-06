@@ -1,5 +1,5 @@
 import '../style/dist/main.css';
-//import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import NavBar from '../components/navBar/NavBar';
 //import Button from '..//components/button/Button';
 
@@ -11,8 +11,9 @@ function MainPage() {
   return (
     <div id="main-page">
       <NavBar />
-      <h1>Oops!</h1>
-      <p>this page is still not ready.</p>
+      <h1>Main page! <br /> Still not ready</h1>
+      <Link to='/guests' className="button-paper">Your guest</Link>
+      <Link to='/expenses' className="button-paper">Your expenses</Link>
     </div>
   );
 }

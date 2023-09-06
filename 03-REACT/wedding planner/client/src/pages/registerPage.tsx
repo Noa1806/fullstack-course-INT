@@ -81,6 +81,7 @@ function RegisterPage() {
             <label htmlFor="password" className="placeholder">Password</label>
           </div>
           <input className="button-paper" type='submit' value={'Create your account'} />
+          <br />
           <Link to='/login'><span>Already have an account? </span>Sign in here!</Link>
         </form>
      

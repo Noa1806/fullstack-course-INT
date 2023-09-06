@@ -1,0 +1,39 @@
+.button-paper {
+    align-self: center;
+    background-color: rgba(255, 255, 255, 0.738);
+    background-image: none;
+    background-position: 0 90%;
+    background-repeat: repeat no-repeat;
+    background-size: 4px 3px;
+    border-radius: 15px 225px 255px 15px 15px 255px 225px 15px;
+    border: solid 2px #D36B00;
+    box-shadow: rgba(0, 0, 0, .2) 15px 28px 25px -18px;
+    box-sizing: border-box;
+    cursor: pointer;
+    display: inline-block;
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.2rem;
+    line-height: 7%;
+    outline: none;
+    padding: .75rem;
+    margin: 3%;
+    text-decoration: none;
+    transition: all 235ms ease-in-out;
+    border-bottom-left-radius: 5% 10%;
+    border-bottom-right-radius: 5% 10%;
+    border-top-left-radius: 5% 10%;
+    border-top-right-radius: 5% 10%;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    color: #42032C;
+}
+
+.button-paper:hover {
+    box-shadow: rgba(0, 0, 0, .3) 2px 8px 8px -6px;
+    transform: translate3d(0, 2px, 0);
+}
+
+.button-paper:focus {
+    box-shadow: rgba(0, 0, 0, .3) 2px 8px 4px -6px;
+}
