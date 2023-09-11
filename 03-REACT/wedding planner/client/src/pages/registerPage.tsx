@@ -20,9 +20,9 @@ function RegisterPage() {
     async function createUser(ev: any) {
         try{
         ev.preventDefault();
-          const nameOfBride = ev.currentTarget.elements.nameOfBride.value;
+          const nameOfBride = ev.currentTarget.elements.brideName.value;
           if (!nameOfBride) throw new Error("No name of bride");
-          const nameOfGroom = ev.currentTarget.elements.nameOfGroom.value;
+          const nameOfGroom = ev.currentTarget.elements.groomName.value;
           if (!nameOfGroom) throw new Error("No name of groom");
           const weddingDate = ev.currentTarget.elements.weddingDate.value;
           if (!weddingDate) throw new Error("No wedding date");

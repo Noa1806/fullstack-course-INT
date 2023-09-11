@@ -1,18 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Oswald&display=swap');
 
 .navBar {
-    background-color: #E6D2AA;
-    min-height: 4em;
-    width:85%;
+    background-color: none;
+    width:55%;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: right;
+    align-items:end;
     border-radius: 50px;
-    margin: 0 auto;
+    margin-left:45%;
+    
     
     .navLable{
         font-family: 'Oswald', sans-serif;
-        font-size: 2em;
+        font-size: 1.4em;
         padding-right: 5%;
         color: #42032C;
         text-decoration: none;
@@ -40,22 +40,38 @@
     
 } 
 
-@media (max-width: 750px){
+
+@media (max-width: 880px){
     .navBar{
-        min-height: 3em;
-        width:96%;
+        width:65%;
+        margin-left:35%;
 
         .navLable{
-            font-size: 1.5em;
+            font-size: 1.3em;
             padding: 2%;
         }
     }
 }
 
-@media (max-width: 500px){
+
+@media (max-width: 650px){
     .navBar{
-        min-height: 2em;
-        width:90%;
+        width:75%;
+        margin-left:25%;
+    
+        .navLable{
+            font-size: 1em;
+            padding-right: 3%;
+        }
+
+    }
+}
+
+
+@media (max-width: 490px){
+    .navBar{
+        width:85%;
+        margin-left:10%;
     
         .navLable{
             font-size: 1em;
