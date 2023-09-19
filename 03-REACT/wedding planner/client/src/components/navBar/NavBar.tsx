@@ -9,10 +9,10 @@ const NavBar = () => {
                 <nav className='navBar'>
                     <NavLink className="navLable" to={`/`}>Home</NavLink>
                     <NavLink className="navLable" to={`/about`}>About</NavLink>
-                    <NavLink className="navLable" to={`/catalogue`}>Catalogue</NavLink>
                     <NavLink className="navLable" to={`/login`}>Sign In</NavLink>
                     <NavLink className="navLable" to={`/register`}>Sign Up</NavLink>
                 </nav>
+                <hr className="separator separator--line" />
             </div>
         )
     } catch (error) {

@@ -23,7 +23,7 @@ const LoginPage= ()  => {
 
           const response = await axios.post("/api/users/login", userLogin);
           const data = response.data;
-          if (data.ok) navigate("/main", {state:username});
+          if (data.ok) navigate("/profile", {state:username});
       } catch (error) {
         console.error(error);
       }

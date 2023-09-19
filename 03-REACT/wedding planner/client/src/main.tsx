@@ -9,9 +9,11 @@ import App from './App.tsx'
 import ErrorPage from "./pages/errorPage.tsx";
 import LoginPage from "./pages/loginPage.tsx";
 import RegisterPage from './pages/registerPage.tsx';
+import AddExpensesPage from './pages/addExpensesPage.tsx';
+import AddGuestsPage from './pages/addGuestsPage.tsx';
 import ExpensesPage from './pages/expensesPage.tsx';
 import GuestsPage from './pages/guestsPage.tsx';
-import MainPage from './pages/mainPage.tsx';
+import ProfilePage from './pages/profilePage.tsx';
 import AboutUsPage from './pages/aboutUsPage.tsx';
 import CataloguePage from './pages/cataloguePage.tsx';
 
@@ -40,11 +42,21 @@ const router = createBrowserRouter([
     path: "/guests",
     element: <GuestsPage />,
     errorElement: <ErrorPage />,
+  },
+  {
+    path: "/addExpenses",
+    element: <AddExpensesPage />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/addGuests",
+    element: <AddGuestsPage />,
+    errorElement: <ErrorPage />,
   }
   ,
   {
-    path: "/main",
-    element: <MainPage />,
+    path: "/profile",
+    element: <ProfilePage />,
     errorElement: <ErrorPage />,
   }
   ,

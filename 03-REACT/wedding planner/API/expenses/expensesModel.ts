@@ -11,10 +11,11 @@ export interface Expense {
 }
 
 export enum ExpenseCategory {
-    WEDDING = "wedding",
-    HENNA = "henna",
-    SHABBAT_HATAN = "shabbat hatan",
-    OTHER = "other",
+    BRIDE = "bride",
+    GROOM = "groom",
+    CEREMONY = "ceremony",
+    PARTY = "party",
+    OTHER = "other"
   }
 
 export const ExpenseSchema = new Schema({

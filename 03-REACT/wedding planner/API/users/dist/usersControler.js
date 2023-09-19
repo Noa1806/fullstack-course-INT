@@ -38,8 +38,9 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 exports.__esModule = true;
 exports.login = exports.addUser = void 0;
 var usersModel_1 = require("./usersModel");
-var jwt_simple_1 = require("jwt-simple");
+var jwt = require("jwt-simple");
 var secret = process.env.JWT_SECRET;
+//import bcrypt from "bcryptjs";
 exports.addUser = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
     var _a, nameOfBride, nameOfGroom, weddingDate, username, password, userDB, error_1;
     return __generator(this, function (_b) {
@@ -87,7 +88,7 @@ exports.login = function (req, res) { return __awaiter(void 0, void 0, void 0, f
                 secret_1 = process.env.JWT_SECRET;
                 if (!secret_1)
                     throw new Error("Missing jwt secret");
-                token = jwt_simple_1["default"].encode({ userId: userDB._id, role: "public" }, secret_1);
+                token = jwt.encode({ userId: userDB._id, role: "public" }, secret_1);
                 console.log(token);
                 res.cookie("user", token, { maxAge: 50000000, httpOnly: true });
                 res.status(201).send({ ok: true });
@@ -102,25 +103,51 @@ exports.login = function (req, res) { return __awaiter(void 0, void 0, void 0, f
     });
 }); };
 /*
-export const getUser = async (req: any, res: any) => {
+const jwt: any = require("jwt-simple");
+const secret: string | undefined = process.env.JWT_SECRET;
+import bcrypt from "bcryptjs";
+
+const salt = bcrypt.genSaltSync(10);
+
+export const addNewUser = async (req: any, res: any) => {
   try {
-    const { user } = req.cookies;
-    console.log(user);
-    if (!secret) throw new Error("No secret");
-    
-    const decoded = jwt.decode(user, secret);
-    console.log(decoded);
-    
-    const { userId, role} = decoded;
+    const { name, email, password } = req.body;
+    const hash = bcrypt.hashSync(password, salt);
+    const userLogin = await UserModel.create({
 
-    if(role === 'admin') console.log("Give all avilable data")
+      name, email, password: hash
+    })
+    console.log(userLogin)
+    res.status(201).send({ ok: true })
 
-    const userDB = await UserModel.findById(userId);
-
-    res.send({ ok: true, user: userDB });
-  } catch (error: any) {
-    console.error(error);
-    res.status(500).send({ error: error.message });
+  } catch (error) {
+    if ((error as { code: number }).code === 11000) {
+      res.status(409).send({ ok: false, error: `user already exists` });
+    }
+    console.error(error)
   }
-};
+}
+
+export const userLogin = async (req: any, res: any) => {
+  try {
+    let { email, password } = req.body;
+    password = bcrypt.hashSync(password, salt);
+    const userLogin = await UserModel.findOne({ email, password })
+    if (!userLogin) {
+      res.status(401).send({ ok: false })
+    } else {
+      const token = jwt.encode(userLogin._id, secret)
+
+      console.log(token)
+      res.cookie(`${email}`, token, {
+        maxAge: 9000000, httpOnly: true
+      })
+      res.status(200).send({ ok: true })
+    }
+
+  } catch (error) {
+    console.error(error)
+  }
+}
+
 */

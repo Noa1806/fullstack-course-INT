@@ -1,12 +1,12 @@
-import NavBar from '../components/navBar/NavBar';
+import ProfileNavBar from '../components/profileNavBar/ProfileNavBar';
 
 function CataloguePage() {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     
     return (
         <div>
-        <NavBar />
-        <div id="about-us-page">
+        <ProfileNavBar />
+        <div id="catalogue-page">
             <h1>Oops!</h1>
             <p>this page is still not ready.</p>
         </div>
