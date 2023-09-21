@@ -1,5 +1,4 @@
 import mongoose, { Schema } from "mongoose";
-import { UserSchema } from "../users/usersModel";
 
 export interface Expense {
   // public uid: string = uuid();
@@ -24,7 +23,6 @@ export const ExpenseSchema = new Schema({
     supplier: {require:true, type:String},
     cost: {require:true, type:Number},
     advancePayement: {require:true, type:Number},
-    leftToPay: {type:Number},
     expenseCategory: {
         type: String,
         enum: ExpenseCategory,

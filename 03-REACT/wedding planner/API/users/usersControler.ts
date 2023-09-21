@@ -1,7 +1,7 @@
 import UserModel from "./usersModel";
-const jwt: any = require("jwt-simple");
+import jwt from "jwt-simple";
 const secret: string | undefined = process.env.JWT_SECRET;
-//import bcrypt from "bcryptjs";
+
 
 export const addUser = async (req: any, res: any) => {
   try {
@@ -43,7 +43,7 @@ export const login = async (req: any, res: any) => {
     const token = jwt.encode({ userId: userDB._id, role: "public" }, secret);
     console.log(token);
 
-    res.cookie("user", token, { maxAge: 50000000, httpOnly: true });
+    res.cookie("user", token, { maxAge: 7 * 24 * 60 * 60 * 1000, httpOnly: true });
 
     res.status(201).send({ ok: true });
   } catch (error: any) {
@@ -52,52 +52,39 @@ export const login = async (req: any, res: any) => {
   }
 };
 
+export const logout = (req: any, res: any) => {
+  try {
+    res.clearCookie('user');
+    res.send('Cookie deleted');
+
+    res.status(200).send({ ok: true});
+
+  } catch (error) {
+    console.error(error);
+    res.status(500).send({ error: "Internal server error" });
+
+  }
+};
+
+export const getUserById  = async (req: any, res: any) => {
+  try {
+    const { user } = req.cookies;
+    if (!secret) throw new Error("No secret");
+    
+    const decoded = jwt.decode(user, secret);
+    
+    const { userId } = decoded;
+
+    const userDB = await UserModel.findById(userId);
+
+    res.send({ ok: true, user: userDB });
+  } catch (error: any) {
+    console.error(error);
+    res.status(500).send({ error: error.message });
+  }
+};
 /*
-const jwt: any = require("jwt-simple");
-const secret: string | undefined = process.env.JWT_SECRET;
-import bcrypt from "bcryptjs";
 
-const salt = bcrypt.genSaltSync(10);
 
-export const addNewUser = async (req: any, res: any) => {
-  try {
-    const { name, email, password } = req.body;
-    const hash = bcrypt.hashSync(password, salt);
-    const userLogin = await UserModel.create({
-
-      name, email, password: hash
-    })
-    console.log(userLogin)
-    res.status(201).send({ ok: true })
-
-  } catch (error) {
-    if ((error as { code: number }).code === 11000) {
-      res.status(409).send({ ok: false, error: `user already exists` });
-    }
-    console.error(error)
-  }
-}
-
-export const userLogin = async (req: any, res: any) => {
-  try {
-    let { email, password } = req.body;
-    password = bcrypt.hashSync(password, salt);
-    const userLogin = await UserModel.findOne({ email, password })
-    if (!userLogin) {
-      res.status(401).send({ ok: false })
-    } else {
-      const token = jwt.encode(userLogin._id, secret)
-
-      console.log(token)
-      res.cookie(`${email}`, token, {
-        maxAge: 9000000, httpOnly: true
-      })
-      res.status(200).send({ ok: true })
-    }
-
-  } catch (error) {
-    console.error(error)
-  }
-}
 
 */

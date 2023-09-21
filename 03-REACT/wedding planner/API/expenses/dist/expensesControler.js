@@ -38,15 +38,19 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 exports.__esModule = true;
 exports.updateExpenseType = exports.deleteExpense = exports.addExpense = void 0;
 var expensesModel_1 = require("./expensesModel");
-//const secret = process.env.JWT_SECRET;
 exports.addExpense = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var _a, category, name, supplier, cost, advancePayement, expenseCategory, expenseDB, error_1;
+    var _a, userId, name, supplier, cost, advancePayement, expenseCategory, expenseDB, error_1;
     return __generator(this, function (_b) {
         switch (_b.label) {
             case 0:
                 _b.trys.push([0, 2, , 3]);
-                _a = req.body, category = _a.category, name = _a.name, supplier = _a.supplier, cost = _a.cost, advancePayement = _a.advancePayement, expenseCategory = _a.expenseCategory;
-                return [4 /*yield*/, expensesModel_1["default"].create({ category: category, name: name, supplier: supplier, cost: cost, advancePayement: advancePayement, expenseCategory: expenseCategory })];
+                _a = req.body, userId = _a.userId, name = _a.name, supplier = _a.supplier, cost = _a.cost, advancePayement = _a.advancePayement, expenseCategory = _a.expenseCategory;
+                return [4 /*yield*/, expensesModel_1["default"].create({ userId: userId,
+                        name: name,
+                        supplier: supplier,
+                        cost: cost,
+                        advancePayement: advancePayement,
+                        expenseCategory: expenseCategory })];
             case 1:
                 expenseDB = _b.sent();
                 console.log(expenseDB);

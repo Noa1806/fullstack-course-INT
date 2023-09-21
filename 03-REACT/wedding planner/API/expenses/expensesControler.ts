@@ -1,13 +1,24 @@
 import ExpenseModel from "./expensesModel";
-import jwt from "jwt-simple";
-//const secret = process.env.JWT_SECRET;
+
 
 export const addExpense = async (req: any, res: any) => {
   try {
-    const { category, name, supplier, cost, advancePayement, expenseCategory } = req.body;
+    const { 
+      userId,
+      name,
+      supplier,
+      cost,
+      advancePayement,
+      expenseCategory
+     } = req.body;
     
     //add expenses to DB;
-    const expenseDB = await ExpenseModel.create({category, name, supplier, cost, advancePayement, expenseCategory });
+    const expenseDB = await ExpenseModel.create({userId,
+      name,
+      supplier,
+      cost,
+      advancePayement,
+      expenseCategory });
 
     console.log(expenseDB);
 

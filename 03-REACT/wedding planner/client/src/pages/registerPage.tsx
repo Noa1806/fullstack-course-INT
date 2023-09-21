@@ -5,7 +5,8 @@ import NavBar from '../components/navBar/NavBar';
 import '../style/dist/register.css';
 //import { create } from 'domain';
 
-interface User {
+export interface User {
+    _id:string;
     nameOfBride: string;
     nameOfGroom: string;
     weddingDate: Date;
@@ -31,14 +32,12 @@ function RegisterPage() {
           const password = ev.currentTarget.elements.password.value;
           if (!password) throw new Error("No Password");
       
-          const user:User = {
-            nameOfBride,
-            nameOfGroom,
-            weddingDate,
-            username,
-            password
-          };
-            const response = await axios.post("/api/users/add-user", user);
+            const response = await axios.post("/api/users/add-user", {
+              nameOfBride,
+              nameOfGroom,
+              weddingDate,
+              username,
+              password});
             const data = response.data;
             if (data.ok) navigate("/login");
             console.log(data);

@@ -12,13 +12,14 @@
     
     .navLable{
         font-family: 'Oswald', sans-serif;
-        font-size: 1.4em;
+        font-size: 1.2em;
         padding-right: 5%;
         color: #42032C;
         text-decoration: none;
         text-transform: uppercase;
         transition: 0.5s;
     }
+
 
     .navLable::after {
         content: "";
@@ -64,27 +65,39 @@
   }
 
 
+@media (max-width: 1000px){
+    .navBar{
+        width:65%;
+        margin-left:35%;
+
+        .navLable{
+            font-size: 1.2em;
+            padding: 2%;
+        }
+    }
+}
+
 @media (max-width: 880px){
     .navBar{
         width:65%;
         margin-left:35%;
 
         .navLable{
-            font-size: 1.3em;
+            font-size: 1em;
             padding: 2%;
         }
     }
 }
 
 
-@media (max-width: 650px){
+@media (max-width: 700px){
     .navBar{
         width:75%;
         margin-left:25%;
     
         .navLable{
             font-size: 1em;
-            padding-right: 3%;
+            padding-right: 5%;
         }
 
     }

@@ -23,7 +23,9 @@ const LoginPage= ()  => {
 
           const response = await axios.post("/api/users/login", userLogin);
           const data = response.data;
-          if (data.ok) navigate("/profile", {state:username});
+          if (data.ok) 
+            navigate("/profile", {state:username});
+          else alert("Your username or password must be wrong");
       } catch (error) {
         console.error(error);
       }

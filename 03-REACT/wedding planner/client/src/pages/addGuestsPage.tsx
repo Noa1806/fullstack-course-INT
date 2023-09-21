@@ -1,5 +1,6 @@
-//import { Link } from 'react-router-dom';
 import axios from 'axios';
+import { useEffect, useState } from "react";
+import  {User}  from "./registerPage";
 import { useNavigate } from 'react-router-dom';
 import ProfileNavBar from '../components/profileNavBar/ProfileNavBar';
 import '../style/dist/addGuests.css';
@@ -15,13 +16,31 @@ interface Guest {
 
 
  function AddGuestsPage() {
+
     
+  const [user, setuser] = useState<User>();
+
+  useEffect(() => {
+    getUserInfo();
+  }, []);
+
+  const getUserInfo = async () => {
+    try {
+      const response = await axios.get("/api/users/getUserById");
+      const userDB = response.data.user;
+      setuser(userDB);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
     const navigate = useNavigate();
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     async function addGuest(ev: any) {
         try{
         ev.preventDefault();
-          const userId = "";
+          const userId = user?._id;
+          if (!userId) throw new Error("No Id");
           const firstName = ev.currentTarget.elements.firstName.value;
           if (!firstName) throw new Error("No first name");
           const lastName = ev.currentTarget.elements.lastName.value;
@@ -34,7 +53,7 @@ interface Guest {
           if (!GuestType) throw new Error("No category");
           
       
-          const user:Guest = {
+          const guest:Guest = {
             userId,
             firstName,
             lastName,
@@ -43,7 +62,7 @@ interface Guest {
             GuestType
           };
 
-            const response = await axios.post("/api/users/add-user", user);
+            const response = await axios.post("/api/users/add-user", guest);
             const data = response.data;
             if (data.ok) navigate("/main");
             console.log(data);

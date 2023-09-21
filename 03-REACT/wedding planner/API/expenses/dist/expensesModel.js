@@ -16,7 +16,6 @@ exports.ExpenseSchema = new mongoose_1.Schema({
     supplier: { require: true, type: String },
     cost: { require: true, type: Number },
     advancePayement: { require: true, type: Number },
-    leftToPay: { type: Number },
     expenseCategory: {
         type: String,
         "enum": ExpenseCategory,

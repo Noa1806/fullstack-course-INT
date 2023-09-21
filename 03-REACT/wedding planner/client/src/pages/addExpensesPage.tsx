@@ -1,5 +1,7 @@
 //import { Link } from 'react-router-dom';
 import axios from 'axios';
+import { useEffect, useState } from "react";
+import  {User}  from "./registerPage";
 import { useNavigate } from 'react-router-dom';
 import ProfileNavBar from '../components/profileNavBar/ProfileNavBar';
 import '../style/dist/addExpenses.css';
@@ -15,13 +17,31 @@ interface Expense {
 
 
  function AddExpensesPage() {
+
     
+  const [user, setuser] = useState<User>();
+
+  useEffect(() => {
+    getUserInfo();
+  }, []);
+
+  const getUserInfo = async () => {
+    try {
+      const response = await axios.get("/api/users/getUserById");
+      const userDB = response.data.user;
+      setuser(userDB);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
     const navigate = useNavigate();
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     async function addExpense(ev: any) {
         try{
         ev.preventDefault();
-          const userId = "";
+          const userId = user?._id;
+          if (!userId) throw new Error("No Id");
           const name = ev.currentTarget.elements.expense.value;
           if (!name) throw new Error("No name");
           const supplier = ev.currentTarget.elements.supplier.value;
@@ -34,7 +54,7 @@ interface Expense {
           if (!ExpenseCategory) throw new Error("No category");
           
       
-          const user:Expense = {
+          const expense:Expense = {
             userId,
             name,
             supplier,
@@ -43,9 +63,9 @@ interface Expense {
             ExpenseCategory
           };
 
-            const response = await axios.post("/api/users/add-user", user);
+            const response = await axios.post("/api/expenses/add-expense", expense);
             const data = response.data;
-            if (data.ok) navigate("/main");
+            if (data.ok) navigate("/expenses");
             console.log(data);
         } catch (error) {
           console.error(error);
@@ -58,6 +78,7 @@ interface Expense {
             <ProfileNavBar />
                 <form className="form" onSubmit={addExpense}>
                     <h2>Write down Your Expense For The Wedding</h2>
+                    <h6></h6>
                     <div className="input-container ic">
                         <input id="expense" className="input" type="text" placeholder=" " />
                         <div className="cut"></div>
