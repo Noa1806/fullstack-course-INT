@@ -6,13 +6,13 @@ import { useNavigate } from 'react-router-dom';
 import ProfileNavBar from '../components/profileNavBar/ProfileNavBar';
 import '../style/dist/addExpenses.css';
 
-interface Expense {
+export interface Expense {
     userId: string;
     name: string;
     supplier: string;
     cost: number;
     advancePayement: number;
-    ExpenseCategory:string;
+    expenseCategory:string;
   }
 
 
@@ -50,8 +50,8 @@ interface Expense {
           if (!cost) throw new Error("No cost");
           const advancePayement = ev.currentTarget.elements.advancePayement.value;
           if (!advancePayement) throw new Error("No advance payement");
-          const ExpenseCategory = ev.currentTarget.elements.expenseCategory.value;
-          if (!ExpenseCategory) throw new Error("No category");
+          const expenseCategory = ev.currentTarget.elements.expenseCategory.value;
+          if (!expenseCategory) throw new Error("No category");
           
       
           const expense:Expense = {
@@ -60,7 +60,7 @@ interface Expense {
             supplier,
             cost,
             advancePayement,
-            ExpenseCategory
+            expenseCategory
           };
 
             const response = await axios.post("/api/expenses/add-expense", expense);
@@ -90,17 +90,17 @@ interface Expense {
                         <label htmlFor="supplier" className="placeholder">Supplier</label>
                     </div>
                     <div className="input-container ic">
-                        <input id="cost" className="input" type="text" placeholder=" " />
+                        <input id="cost" className="input" type="number" placeholder=" " />
                         <div className="cut"></div>
                         <label htmlFor="cost" className="placeholder">Cost</label>
                     </div>
                     <div className="input-container ic">
-                        <input id="advancePayement" className="input" type="text" placeholder=" " />
+                        <input id="advancePayement" className="input" type="number" placeholder=" " />
                         <div className="cut"></div>
                         <label htmlFor="advancePayement" className="placeholder">Advance Payement</label>
                     </div>
                     <div className="input-container ic">
-                        <select required id="expenseCategory" className="input" name="guestTypes">
+                        <select required id="expenseCategory" className="input" name="expenseCategory">
                             <option value={''} hidden>Expense Category</option>
                             <option value={'bride'}>For The Bride</option>
                             <option value={'groom'}>For The Groom</option>

@@ -37,3 +37,27 @@
 .button-paper:focus {
     box-shadow: rgba(0, 0, 0, .3) 2px 8px 4px -6px;
 }
+
+table{
+
+    width: 95%;
+    margin: auto;
+    border-collapse: collapse;
+    text-align: left;
+    font-size: 1.1rem;
+    border-style: hidden;
+    
+
+    th{
+        border-bottom: 3px solid #D36B00;
+        border-left: 1px solid #d3690074;
+        padding: 1%;
+    }
+
+    td{
+        font-size: 1rem;
+        padding: 1%;
+        border: 1px solid #d3690074;
+        border-bottom: 1.5px solid #D36B00;
+    }
+}

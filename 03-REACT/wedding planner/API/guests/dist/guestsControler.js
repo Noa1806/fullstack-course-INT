@@ -36,17 +36,23 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 exports.__esModule = true;
-exports.updateGuestType = exports.deleteGuest = exports.addGuest = void 0;
+exports.getGuestsOfUser = exports.updateGuestType = exports.deleteGuest = exports.addGuest = void 0;
 var guestsModel_1 = require("./guestsModel");
-//const secret = process.env.JWT_SECRET;
+var jwt_simple_1 = require("jwt-simple");
+var secret = process.env.JWT_SECRET;
 exports.addGuest = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var _a, firstName, lastName, phoneNumber, numberOfGuest, guestType, guestDB, error_1;
+    var _a, firstName, lastName, phoneNumber, numberOfGuest, guestType, user, decoded, userId, guestDB, error_1;
     return __generator(this, function (_b) {
         switch (_b.label) {
             case 0:
                 _b.trys.push([0, 2, , 3]);
                 _a = req.body, firstName = _a.firstName, lastName = _a.lastName, phoneNumber = _a.phoneNumber, numberOfGuest = _a.numberOfGuest, guestType = _a.guestType;
-                return [4 /*yield*/, guestsModel_1["default"].create({ firstName: firstName, lastName: lastName, phoneNumber: phoneNumber, numberOfGuest: numberOfGuest, guestType: guestType })];
+                user = req.cookies.user;
+                if (!secret)
+                    throw new Error("No secret");
+                decoded = jwt_simple_1["default"].decode(user, secret);
+                userId = decoded.userId;
+                return [4 /*yield*/, guestsModel_1["default"].create({ userId: userId, firstName: firstName, lastName: lastName, phoneNumber: phoneNumber, numberOfGuest: numberOfGuest, guestType: guestType })];
             case 1:
                 guestDB = _b.sent();
                 console.log(guestDB);
@@ -125,6 +131,30 @@ exports.updateGuestType = function (req, res) { return __awaiter(void 0, void 0,
                 error_3 = _b.sent();
                 console.error(error_3);
                 res.status(500).send({ error: error_3.message });
+                return [3 /*break*/, 3];
+            case 3: return [2 /*return*/];
+        }
+    });
+}); };
+exports.getGuestsOfUser = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+    var user, decoded, userId, guests, error_4;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0:
+                _a.trys.push([0, 2, , 3]);
+                user = req.cookies.user;
+                if (!secret)
+                    throw new Error("No secret");
+                decoded = jwt_simple_1["default"].decode(user, secret);
+                userId = decoded.userId;
+                return [4 /*yield*/, guestsModel_1["default"].find({ userId: userId })];
+            case 1:
+                guests = _a.sent();
+                res.send({ guests: guests });
+                return [3 /*break*/, 3];
+            case 2:
+                error_4 = _a.sent();
+                res.status(500).send(error_4);
                 return [3 /*break*/, 3];
             case 3: return [2 /*return*/];
         }

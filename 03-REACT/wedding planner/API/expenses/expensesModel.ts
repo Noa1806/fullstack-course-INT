@@ -7,27 +7,16 @@ export interface Expense {
   supplier: string;
   cost: number;
   advancePayement: number;
+  expenseCategory:string;
 }
 
-export enum ExpenseCategory {
-    BRIDE = "bride",
-    GROOM = "groom",
-    CEREMONY = "ceremony",
-    PARTY = "party",
-    OTHER = "other"
-  }
-
 export const ExpenseSchema = new Schema({
-    userId: {unique:true, index:true, require:true, type:String},
+    userId: {require:true, type:String},
     name: {require:true, type:String},
     supplier: {require:true, type:String},
     cost: {require:true, type:Number},
     advancePayement: {require:true, type:Number},
-    expenseCategory: {
-        type: String,
-        enum: ExpenseCategory,
-        default: ExpenseCategory.OTHER,
-      },
+    expenseCategory: {require:true, type: String},
     });
 
 

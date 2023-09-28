@@ -5,5 +5,6 @@ var router = express_1["default"].Router();
 var expensesControler_1 = require("./expensesControler");
 router
     .post("/add-expense", expensesControler_1.addExpense)["delete"]('/delete-expense', expensesControler_1.deleteExpense)
+    .get('/get-expenses', expensesControler_1.getExpensesOfUser)
     .patch('/update-expense-type', expensesControler_1.updateExpenseType);
 exports["default"] = router;

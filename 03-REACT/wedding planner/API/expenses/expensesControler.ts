@@ -1,16 +1,24 @@
-import ExpenseModel from "./expensesModel";
+import ExpenseModel from "./expensesModel"
+import jwt from "jwt-simple";
+const secret = process.env.JWT_SECRET;
 
 
 export const addExpense = async (req: any, res: any) => {
   try {
     const { 
-      userId,
       name,
       supplier,
       cost,
       advancePayement,
       expenseCategory
      } = req.body;
+
+     const { user } = req.cookies;
+     if (!secret) throw new Error("No secret");
+     
+     const decoded = jwt.decode(user, secret);
+     
+     const { userId } = decoded;
     
     //add expenses to DB;
     const expenseDB = await ExpenseModel.create({userId,
@@ -79,6 +87,21 @@ export const updateExpenseType = async (req: any, res: any) => {
   } catch (error: any) {
     console.error(error);
     res.status(500).send({ error: error.message });
+  }
+};
+
+export const getExpensesOfUser = async (req: any, res: any) => {
+  try {
+    const { user } = req.cookies;
+    if (!secret) throw new Error("No secret");
+
+    const decoded = jwt.decode(user, secret);
+    const userId = decoded.userId;
+
+    const expenses = await ExpenseModel.find({ userId: userId });
+    res.send({ expenses });
+  } catch (error: any) {
+    res.status(500).send(error);
   }
 };
 

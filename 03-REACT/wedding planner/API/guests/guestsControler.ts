@@ -1,13 +1,18 @@
 import GuestModel from "./guestsModel";
 import jwt from "jwt-simple";
-//const secret = process.env.JWT_SECRET;
+const secret = process.env.JWT_SECRET;
 
 export const addGuest = async (req: any, res: any) => {
   try {
     const { firstName, lastName, phoneNumber, numberOfGuest, guestType } = req.body;
+    const { user } = req.cookies;
+    if (!secret) throw new Error("No secret");
     
+    const decoded = jwt.decode(user, secret);
+    
+    const { userId } = decoded;
     //add guests to DB;
-    const guestDB = await GuestModel.create({firstName, lastName, phoneNumber, numberOfGuest, guestType });
+    const guestDB = await GuestModel.create({userId,firstName, lastName, phoneNumber, numberOfGuest, guestType });
 
     console.log(guestDB);
 
@@ -68,6 +73,21 @@ export const updateGuestType = async (req: any, res: any) => {
   } catch (error: any) {
     console.error(error);
     res.status(500).send({ error: error.message });
+  }
+};
+
+export const getGuestsOfUser = async (req: any, res: any) => {
+  try {
+    const { user } = req.cookies;
+    if (!secret) throw new Error("No secret");
+
+    const decoded = jwt.decode(user, secret);
+    const userId = decoded.userId;
+
+    const guests = await GuestModel.find({ userId: userId });
+    res.send({ guests });
+  } catch (error: any) {
+    res.status(500).send(error);
   }
 };
 

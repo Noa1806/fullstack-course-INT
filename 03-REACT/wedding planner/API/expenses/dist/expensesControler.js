@@ -36,15 +36,22 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 exports.__esModule = true;
-exports.updateExpenseType = exports.deleteExpense = exports.addExpense = void 0;
+exports.getExpensesOfUser = exports.updateExpenseType = exports.deleteExpense = exports.addExpense = void 0;
 var expensesModel_1 = require("./expensesModel");
+var jwt_simple_1 = require("jwt-simple");
+var secret = process.env.JWT_SECRET;
 exports.addExpense = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var _a, userId, name, supplier, cost, advancePayement, expenseCategory, expenseDB, error_1;
+    var _a, name, supplier, cost, advancePayement, expenseCategory, user, decoded, userId, expenseDB, error_1;
     return __generator(this, function (_b) {
         switch (_b.label) {
             case 0:
                 _b.trys.push([0, 2, , 3]);
-                _a = req.body, userId = _a.userId, name = _a.name, supplier = _a.supplier, cost = _a.cost, advancePayement = _a.advancePayement, expenseCategory = _a.expenseCategory;
+                _a = req.body, name = _a.name, supplier = _a.supplier, cost = _a.cost, advancePayement = _a.advancePayement, expenseCategory = _a.expenseCategory;
+                user = req.cookies.user;
+                if (!secret)
+                    throw new Error("No secret");
+                decoded = jwt_simple_1["default"].decode(user, secret);
+                userId = decoded.userId;
                 return [4 /*yield*/, expensesModel_1["default"].create({ userId: userId,
                         name: name,
                         supplier: supplier,
@@ -129,6 +136,30 @@ exports.updateExpenseType = function (req, res) { return __awaiter(void 0, void 
                 error_3 = _b.sent();
                 console.error(error_3);
                 res.status(500).send({ error: error_3.message });
+                return [3 /*break*/, 3];
+            case 3: return [2 /*return*/];
+        }
+    });
+}); };
+exports.getExpensesOfUser = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+    var user, decoded, userId, expenses, error_4;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0:
+                _a.trys.push([0, 2, , 3]);
+                user = req.cookies.user;
+                if (!secret)
+                    throw new Error("No secret");
+                decoded = jwt_simple_1["default"].decode(user, secret);
+                userId = decoded.userId;
+                return [4 /*yield*/, expensesModel_1["default"].find({ userId: userId })];
+            case 1:
+                expenses = _a.sent();
+                res.send({ expenses: expenses });
+                return [3 /*break*/, 3];
+            case 2:
+                error_4 = _a.sent();
+                res.status(500).send(error_4);
                 return [3 /*break*/, 3];
             case 3: return [2 /*return*/];
         }
