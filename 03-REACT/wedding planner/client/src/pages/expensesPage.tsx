@@ -23,7 +23,6 @@ function ExpensesPage() {
       console.error(error);
     }
   };
-
     return (
         <div>
         <ProfileNavBar />
